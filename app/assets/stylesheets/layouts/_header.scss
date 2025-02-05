@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     gap: var(--space-s);
     justify-content: space-between;
-    margin-top: var(--space-m);
+    margin-top: 40px;
     margin-bottom: var(--space-l);
   
     @include media(tabletAndUp) {
