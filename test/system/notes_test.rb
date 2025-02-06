@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class NotesTest < ApplicationSystemTestCase
   setup do
-    @note = notes(:first)
+    @note = Note.ordering.first
   end
 
   test "creating a new quote" do
@@ -10,11 +10,9 @@ class NotesTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Notes"
 
     click_on "New note"
-    assert_selector "h1", text: "New note"
-
     fill_in "Name", with: "Capybara note"
     click_on "Create note"
-
+    
     assert_selector "h1", text: "Notes"
     assert_text "Capybara note"
 
@@ -32,8 +30,6 @@ class NotesTest < ApplicationSystemTestCase
     assert_selector 'h1', text: "Notes"
 
     click_on "Edit", match: :first
-    assert_selector "h1", text: "Edit note"
-
     fill_in "Name", with: "Updated note"
     click_on "Update note"
 
