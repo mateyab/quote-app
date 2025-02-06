@@ -3,6 +3,7 @@
   <div class="header">
     <h1>New note</h1>
   </div>
-
+  <%= turbo_frame_tag "new_note" do%>
   <%= render "form", note: @note %>
+  <%end%>
 </main>

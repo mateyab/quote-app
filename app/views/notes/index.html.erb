@@ -3,9 +3,12 @@
     <h1>Notes</h1>
     <%= link_to "New note",
                 new_note_path,
-                class: "btn btn--primary"
+                class: "btn btn--primary",
+                data: { turbo_frame: "new_note" }
                  %>
   </div>
-
-  <%= render @notes %>
+  <%= turbo_frame_tag "new_note"%>
+  <%= turbo_frame_tag "notes" do%>
+    <%= render @notes %> <%# renders a partial because @notes is an array%>
+  <%end%>
 </main>
