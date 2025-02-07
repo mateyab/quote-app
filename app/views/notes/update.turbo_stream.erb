@@ -1,2 +1,2 @@
-<%= turbo_stream.remove "note_#{@note.id}" %>
+<%= turbo_stream.replace @note %>
 <%= turbo_stream.prepend "flash", partial: "layouts/flash" %>

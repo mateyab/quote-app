@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :notes
-  root to: "notes#index"
+  root to: "pages#home"
 end

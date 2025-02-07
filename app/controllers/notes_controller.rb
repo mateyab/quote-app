@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :set_note, only: [:show,:edit,:update,:destroy]
 
   def index
-    @notes = Note.ordering
+    @notes = current_company.notes.ordering
   end
 
   def show
@@ -13,12 +13,12 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(note_params)
+    @note = current_company.notes.build(note_params)
 
     if @note.save 
       respond_to do |format|
         format.html {redirect_to notes_path, notice: "Note was successfully created."}
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Note was successfully created." }
       end
     else
       render :new, status: :unprocessable_entity
@@ -31,7 +31,10 @@ class NotesController < ApplicationController
 
   def update 
     if @note.update(note_params)
-      redirect_to notes_path, notice: "Note was successfully updated"
+      respond_to do |format|
+        format.html { redirect_to notes_path, notice: "Note was successfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Note was successfully updated." }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,13 +44,13 @@ class NotesController < ApplicationController
     @note.destroy
     respond_to do |format|
       format.html {redirect_to notes_path, notice: "Note successfully deleted."}
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = "Note was successfully destroyed." }
     end
   end
 
   private
     def set_note
-      @note = Note.find(params[:id])
+      @note = current_company.notes.find(params[:id])
     end
 
     def note_params

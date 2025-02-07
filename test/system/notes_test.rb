@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class NotesTest < ApplicationSystemTestCase
   setup do
+    login_as users(:accountant)
     @note = Note.ordering.first
   end
 
@@ -46,14 +47,14 @@ class NotesTest < ApplicationSystemTestCase
   end
 
   test "Cancelling a note edit" do 
-    visit root_path
+    visit notes_path
     assert_selector 'h1', text: "Notes"
 
     click_on "Edit", match: :first
     click_on "Cancel"
 
     assert_selector "h1", text: "Notes"
-    assert_text "first note"
+    assert_text "First note"
   end
 
 
