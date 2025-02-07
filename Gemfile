@@ -19,7 +19,7 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 gem "simple_form", "~> 5.1.0"
-gem 'browser', '~> 5.0'
+gem 'browser', '~> 6.2'
 gem "devise", "~> 4.8.1"
 
 
