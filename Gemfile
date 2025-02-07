@@ -20,6 +20,8 @@ gem "cssbundling-rails"
 gem "jbuilder"
 gem "simple_form", "~> 5.1.0"
 gem 'browser', '~> 5.0'
+gem "devise", "~> 4.8.1"
+
 
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
