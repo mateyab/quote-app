@@ -20,7 +20,7 @@ gem "cssbundling-rails"
 gem "jbuilder"
 gem "simple_form", "~> 5.1.0"
 gem 'browser', '~> 5.0'
-gem "devise", "~> 4.8.1"
+gem "devise", "~> 4.9.4"
 
 
 
